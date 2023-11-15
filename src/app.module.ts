@@ -9,26 +9,16 @@ import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
 
 @Module({
   imports: [
-    // GraphQLModule.forRoot<YogaGatewayDriverConfig>({
-    //   driver: YogaGatewayDriver,
-    //   server: {
-    //     cors: true,
-    //     graphqlEndpoint: 'docs',
-    //   },
-    //   gateway: {
-    //     supergraphSdl: new IntrospectAndCompose({
-    //       subgraphs: [{ name: 'users', url: 'http://localhost:9696/graphql' }],
-    //     }),
-    //   },
-    // }),
+
     GraphQLModule.forRoot<ApolloGatewayDriverConfig>({
       driver: ApolloGatewayDriver,
       gateway: {
         supergraphSdl: new IntrospectAndCompose({
-          subgraphs: [{ name: 'users', url: 'http://localhost:9696/graphql' }],
+          subgraphs: [{ name: 'users', url: 'http://localhost:9696/graphql' }, { name: 'posts', url: 'http://localhost:9697/graphql' }],
+
         }),
       },
     }),
   ],
 })
-export class AppModule {}
+export class AppModule { }
