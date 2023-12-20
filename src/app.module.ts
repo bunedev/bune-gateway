@@ -11,7 +11,7 @@ import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
         supergraphSdl: new IntrospectAndCompose({
           subgraphs: [
             { name: 'auth', url: Bun.env.AUTH_GRAPHQL },
-            // { name: 'posts', url: 'http://localhost:9697/graphql' },
+            { name: 'posts', url: Bun.env.BLOG_GRAPHQL },
             // { name: 'payment', url: 'http://localhost:9999/graphql' },
           ],
         }),
